@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from .models import Traveller
 
@@ -17,5 +19,13 @@ def traveller(request, traveller_id):
     context = {'sing_traveller': sing_traveller,}
     return HttpResponse(template.render(context, request))
 
+#def detail(request, traveller_id):
+#    return HttpResponse("You're looking at traveller %s." % traveller_id)
+
 def detail(request, traveller_id):
-    return HttpResponse("You're looking at traveller %s." % traveller_id)
+    person = get_object_or_404(Traveller, pk = traveller_id)
+    return render(request, 'register/traveller.html', {'person' : person})
+
+def register(request):
+    template = loader.get_template('register/register.html')
+    return HttpResponse(template.render())

@@ -13,6 +13,7 @@ class Traveller(models.Model):
     username = models.CharField(max_length = 50)
     email = models.EmailField(max_length = 100)
     hometown = models.CharField(max_length = 200)
+    current_location = models.CharField(max_length = 200)
     biography = models.TextField(null = True, blank = True, help_text = "Don't write your life story! Just a little bit")
     image = models.ImageField(upload_to = None, height_field = None, width_field = None, max_length=100)
     date_of_birth = models.DateField()
