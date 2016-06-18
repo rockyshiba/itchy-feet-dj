@@ -5,16 +5,23 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from .models import Traveller
+from .models import Homepage
 
 # Create your views here.
 
-def index(request):
+def home(request):
+    homepage_content = Homepage.objects.all()
+    template = loader.get_template('register/homepage.html')
+    context = {'homepage_content': homepage_content,}
+    return HttpResponse(template.render(context, request))
+
+def travellers(request):
     travellers = Traveller.objects.all()
     template = loader.get_template('register/travellers.html')
     context = {'travellers': travellers,}
     return HttpResponse(template.render(context, request))
 
-def traveller(request, traveller_id):
+def traveller(request):
     sing_traveller = Traveller.objects.all()
     template = loader.get_template('register/travellers.html')
     context = {'sing_traveller': sing_traveller,}
