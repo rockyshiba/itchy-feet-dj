@@ -7,6 +7,8 @@ class Homepage(models.Model):
     title_text = models.CharField(max_length = 50)
     body_text = models.TextField(null = True, blank = True)
     logo_image = models.ImageField(upload_to = None, height_field = None, width_field = None, max_length = 100)
+    def __str__(self):
+        return self.title_text
 
 class Traveller(models.Model):
     first_name = models.CharField(max_length = 50)
