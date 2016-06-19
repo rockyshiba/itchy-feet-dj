@@ -9,8 +9,9 @@
     <p>This is the registration page.</p>
     <form action="" method="POST">
         {% csrf_token %}
-        <input type="text" name="first_name" value="First name" />
-        <input type="submit" name="register" value="Start walking"/>
+        <table>
+            {{ form }}
+        </table>
     </form>
 </body>
 </html>

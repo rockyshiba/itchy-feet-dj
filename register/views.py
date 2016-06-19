@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from .models import Traveller
 from .models import Homepage
+from .models import TravellerForm
 
 # Create your views here.
 
@@ -34,6 +35,15 @@ def detail(request, traveller_id):
     person = get_object_or_404(Traveller, pk = traveller_id)
     return render(request, 'register/traveller.html', {'person' : person})
 
+# def register(request):
+#     template = loader.get_template('register/register.html')
+#     return HttpResponse(template.render())
+
 def register(request):
-    template = loader.get_template('register/register.html')
-    return HttpResponse(template.render())
+    if request.method == 'POST':
+        new_traveller = TravellerForm(request.POST)
+        template = loader.get_template('register/thanks.html')
+        return HttpResponse(template.render())
+    else:
+        form = TravellerForm()
+    return render(request, 'register/register.html', {'form': form})

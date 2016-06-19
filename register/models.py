@@ -19,6 +19,7 @@ class Traveller(models.Model):
     )
     gender = models.CharField(max_length = 1, choices = GENDERS)
     username = models.CharField(max_length = 50)
+    password = models.CharField(max_length = 50)
     email = models.EmailField(max_length = 100)
     hometown = models.CharField(max_length = 200)
     current_location = models.CharField(max_length = 200, blank = True, help_text = "You can leave this blank")
@@ -35,4 +36,4 @@ class Traveller(models.Model):
 class TravellerForm(ModelForm):
     class Meta:
         model = Traveller
-        fields = ["first_name", "last_name", "email", "username", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
+        fields = ["first_name", "last_name", "email", "username", "password", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
