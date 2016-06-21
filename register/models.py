@@ -1,5 +1,11 @@
 from django.db import models
 from django.forms import ModelForm
+from datetime import date
+from django import forms
+
+#makes all date fields as html input type=date or datetime
+forms.DateInput.input_type = "date"
+forms.DateTimeInput.input_type = "datetime-local"
 
 # Create your models here.
 
@@ -37,3 +43,4 @@ class TravellerForm(ModelForm):
     class Meta:
         model = Traveller
         fields = ["first_name", "last_name", "email", "username", "password", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
+        date_of_birth = forms.DateField()
