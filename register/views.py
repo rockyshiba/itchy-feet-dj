@@ -42,8 +42,13 @@ def detail(request, traveller_id):
 def register(request):
     if request.method == 'POST':
         new_traveller = TravellerForm(request.POST)
-        template = loader.get_template('register/thanks.html')
-        return HttpResponse(template.render())
+        if new_traveller.is_valid():
+            new_traveller.save()
+            template = loader.get_template('register/thanks.html')
+            return HttpResponse(template.render())
+        else:
+            form = new_traveller
+            return render(request, 'register/register.html', {'form': form})
     else:
         form = TravellerForm()
     return render(request, 'register/register.html', {'form': form})

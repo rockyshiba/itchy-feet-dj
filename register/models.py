@@ -30,17 +30,18 @@ class Traveller(models.Model):
     hometown = models.CharField(max_length = 200)
     current_location = models.CharField(max_length = 200, blank = True, help_text = "You can leave this blank")
     biography = models.TextField(null = True, blank = True, help_text = "Don't write your life story! Just a little bit")
-    image = models.ImageField(upload_to = None, height_field = None, width_field = None, max_length=100)
+    image = models.ImageField(null = True, blank = True, upload_to = None, height_field = None, width_field = None, max_length=10000, default = 'images/feet.png')
     date_of_birth = models.DateField()
     created_at = models.DateTimeField(auto_now = False, auto_now_add = True)
     edited_at = models.DateTimeField(auto_now = True, auto_now_add = False)
-    deleted_at = models.DateTimeField(auto_now = False, auto_now_add = True)
+    deleted_at = models.DateTimeField(null = True, blank = True)
     terms = models.BooleanField(help_text = "I agree to the terms and conditions.")
     def __str__(self):
         return self.username
 
-class TravellerForm(ModelForm):
+class TravellerForm(forms.ModelForm):
+    password = forms.CharField(widget = forms.PasswordInput())
     class Meta:
         model = Traveller
-        fields = ["first_name", "last_name", "email", "username", "password", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
+        fields = ["first_name", "last_name", "email", "gender", "username", "password", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
         date_of_birth = forms.DateField()

@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <style type="text/css">
+        .error input, .error select {
+            border: 2px red solid;
+        }
+    </style>
 </head>
 <body>
     <h1>Registration page</h1>
@@ -12,6 +17,7 @@
         <table>
             {{ form }}
         </table>
+        <input type="submit" name="submit" value="Get going" />
     </form>
 </body>
 </html>
