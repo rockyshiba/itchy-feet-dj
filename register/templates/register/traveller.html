@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ person.username }}</title>
-</head>
-<body>
-<h2>{{ person.username }}</h2>
-<p>You are now looking at {{ person.username }}</p>
-</body>
-</html>
+{% extends "register/base.html" %}
+
+{% block content %}
+        <div class="row">
+        <div class="container">
+            <div class="col-lg-4">{{ person.image }}</div>
+            <div class="col-lg-4">
+                <table id="profile_details">
+                    <tbody>
+                        <tr>
+                            <th>Username</th><td>{{ person.username }}</td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th><td>{{ person.gender }}</td>
+                        </tr>
+                        <tr>
+                            <th>Hometown</th><td>{{ person.hometown }}</td>
+                        </tr>
+                        <tr>
+                            <th>D.O.B.</th><td>{{ person.date_of_birth }}</td>
+                        </tr>
+                        <tr>
+                            <th>Current location</th><td>{{ person.current_location }}</td>
+                        </tr>
+                        <tr>
+                            <th>Bio</th><td>{{ person.biography }}</td>
+                        </tr>
+                        <tr>
+                            <th>Member since</th><td>{{ person.created_at }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        </div>
+
+
+{% endblock %}
