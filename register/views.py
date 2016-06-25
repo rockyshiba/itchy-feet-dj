@@ -13,7 +13,7 @@ from .models import TravellerForm
 def home(request):
     homepage_content = Homepage.objects.all()
     template = loader.get_template('register/homepage.html')
-    context = {'homepage_content': homepage_content,}
+    context = {'homepage': homepage_content,}
     return HttpResponse(template.render(context, request))
 
 def travellers(request):

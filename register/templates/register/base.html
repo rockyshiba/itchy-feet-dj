@@ -10,7 +10,16 @@
     <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
 </head>
 <body>
+<header>
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4"><a href="register">Sign up!</a><a href="login">Log in</a></div>
+    </div>
+</header>
+<main>
     {% block content %}
     {% endblock %}
+</main>
+<footer></footer>
 </body>
 </html>
