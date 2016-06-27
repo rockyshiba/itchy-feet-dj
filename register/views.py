@@ -11,9 +11,10 @@ from .models import TravellerForm
 # Create your views here.
 
 def home(request):
-    homepage_content = Homepage.objects.all()
+    #homepage_content = Homepage.objects.all()
+    travellers = Traveller.objects.all()
     template = loader.get_template('register/homepage.html')
-    context = {'homepage': homepage_content,}
+    context = {'travellers': travellers,}
     return HttpResponse(template.render(context, request))
 
 def travellers(request):
