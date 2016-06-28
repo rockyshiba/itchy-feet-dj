@@ -14,9 +14,16 @@
 {#</html>#}
 {% extends "register/base.html" %}
 {% block content %}
-<ul>
-    {% for t in travellers %}
-        <li><a href="./{{ t.id }}">{{ t.username }}, {{ t.email }}</a></li>
+    <div class="container-fluid">
+        {% for t in travellers %}
+        <div class="traveller">
+        <a href="./{{ t.id }}">
+            <img src="" alt="{{ t.username }}" class="traveller_pic"/>
+            <div class="traveller_username">
+                {{ t.username }}
+            </div>
+        </a>
+        </div>
     {% endfor %}
-</ul>
+    </div>
 {% endblock %}

@@ -77,6 +77,9 @@ def register(request):
         form = TravellerForm()
     return render(request, 'register/register.html', {'form': form})
 
+def login(request, provided_email, provided_password):
+    return render(request, 'register/login.html')
+
 def update(request, traveller_email):
     """
     :param request:
