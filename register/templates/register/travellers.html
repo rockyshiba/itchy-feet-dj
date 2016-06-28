@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Travellers</title>
-</head>
-<body>
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Travellers</title>#}
+{#</head>#}
+{#<body>#}
+{#<ul>#}
+{#    {% for t in travellers %}#}
+{#        <li><a href="./{{ t.id }}">{{ t.username }}, {{ t.email }}</a></li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{#</body>#}
+{#</html>#}
+{% extends "register/base.html" %}
+{% block content %}
 <ul>
     {% for t in travellers %}
         <li><a href="./{{ t.id }}">{{ t.username }}, {{ t.email }}</a></li>
     {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

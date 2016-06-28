@@ -45,3 +45,9 @@ class TravellerForm(forms.ModelForm):
         model = Traveller
         fields = ["first_name", "last_name", "email", "gender", "username", "password", "hometown", "current_location", "biography", "image", "date_of_birth", "terms"]
         date_of_birth = forms.DateField()
+
+class About(models.Model):
+    title_text = models.CharField(max_length=200)
+    body_text = models.TextField(null=True, blank=True)
+    def __str__(self):
+        return self.title_text
