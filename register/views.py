@@ -77,8 +77,17 @@ def register(request):
         form = TravellerForm()
     return render(request, 'register/register.html', {'form': form})
 
-def login(request, provided_email, provided_password):
-    return render(request, 'register/login.html')
+def login(request):
+    if request.method == "POST":
+    #store the email and password POST values in variables
+    post_email = request.POST['email']
+    post_password = request.POST['password']
+        try:
+            find_user = Traveller.objects.get(email = post_email)
+        except Traveller.DoesNotExist:
+            return render(request, 'register/login.html')
+    else:
+        return render(request, 'register/login.html')
 
 def update(request, traveller_email):
     """
