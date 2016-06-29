@@ -108,3 +108,15 @@ def update(request, traveller_id):
         return render(request, 'register/traveller.html', {'person' : existing_traveller})
     else:
         return render(request, 'register/update.html', {'person' : existing_traveller})
+
+def delete(request, traveller_id):
+    """
+    :param request:
+    :param traveller_id:
+    :return:
+    """
+    exisiting_traveller = get_object_or_404(Traveller, id = traveller_id)
+    if request.method == "POST":
+        return render(request, 'register/bye.html')
+    else:
+        return render(request, 'register/delete.html', {'person' : existing_traveller})
