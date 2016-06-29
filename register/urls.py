@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^travellers/$', views.travellers, name='travellers'),
     url(r'^about/$', views.about, name='about'),
     url(r'^login/$', views.login, name='login'),
+    url(r'^travellers/(?P<traveller_id>[0-9]+)/update', views.update, name='update'),
 ]

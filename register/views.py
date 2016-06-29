@@ -79,22 +79,32 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
-    #store the email and password POST values in variables
-    post_email = request.POST['email']
-    post_password = request.POST['password']
+        post_email = request.POST['email']
+        post_password = request.POST['password']
         try:
             find_user = Traveller.objects.get(email = post_email)
         except Traveller.DoesNotExist:
             return render(request, 'register/login.html')
-    else:
-        return render(request, 'register/login.html')
+        else:
+            return render(request, 'register/login.html')
 
-def update(request, traveller_email):
+def update(request, traveller_id):
     """
     :param request:
     :param traveller_email:
     Find an existing Traveller object by email.
     :return:
-    Returns a view contanting the object.
+    Returns a view containing the object.
     """
-    existing_traveller = get_object_or_404(Traveller, email = traveller_email)
+    existing_traveller = get_object_or_404(Traveller, id = traveller_id)
+    if request.method == "POST":
+        hometown = request.POST['hometown']
+        current_location = request.POST['current_location']
+        biography = request.POST['biography']
+        existing_traveller.hometown = hometown
+        existing_traveller.current_location = current_location
+        existing_traveller.biography = biography
+        existing_traveller.save()
+        return render(request, 'register/traveller.html', {'person' : existing_traveller})
+    else:
+        return render(request, 'register/update.html', {'person' : existing_traveller})
