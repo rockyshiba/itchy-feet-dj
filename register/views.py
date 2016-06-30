@@ -26,20 +26,20 @@ def about(request):
 
 def travellers(request):
     """
-    Returns all travellers from the DB
+    Returns all travellers from the DB randomly
     :param request:
     :return:
     """
-    travellers = Traveller.objects.all()
+    travellers = Traveller.objects.order_by('?')
     template = loader.get_template('register/travellers.html')
     context = {'travellers': travellers,}
     return HttpResponse(template.render(context, request))
 
-def traveller(request):
-    sing_traveller = Traveller.objects.all()
-    template = loader.get_template('register/travellers.html')
-    context = {'sing_traveller': sing_traveller,}
-    return HttpResponse(template.render(context, request))
+# def traveller(request):
+#     sing_traveller = Traveller.objects.all()
+#     template = loader.get_template('register/travellers.html')
+#     context = {'sing_traveller': sing_traveller,}
+#     return HttpResponse(template.render(context, request))
 
 #def detail(request, traveller_id):
 #    return HttpResponse("You're looking at traveller %s." % traveller_id)
@@ -83,10 +83,14 @@ def login(request):
         post_password = request.POST['password']
         try:
             find_user = Traveller.objects.get(email = post_email)
+            if find_user.password == post_password:
+                return render(request, 'register/profile.html', {'person': find_user})
+            else:
+                return render(request, 'register/login.html')
         except Traveller.DoesNotExist:
             return render(request, 'register/login.html')
-        else:
-            return render(request, 'register/login.html')
+    else:
+        return render(request, 'register/login.html')
 
 def update(request, traveller_id):
     """
@@ -115,8 +119,9 @@ def delete(request, traveller_id):
     :param traveller_id:
     :return:
     """
-    exisiting_traveller = get_object_or_404(Traveller, id = traveller_id)
+    existing_traveller = get_object_or_404(Traveller, id = traveller_id)
     if request.method == "POST":
+        existing_traveller.delete()
         return render(request, 'register/bye.html')
     else:
         return render(request, 'register/delete.html', {'person' : existing_traveller})

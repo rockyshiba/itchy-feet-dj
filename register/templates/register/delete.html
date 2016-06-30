@@ -1,7 +1,15 @@
-{% extends "register/base.html" %}
-
+{% extends 'register/base.html' %}
 {% block content %}
-    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2>Delete {{ person.username }}?</h2>
+            <p>Are you sure you hang up your shoes?</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+        <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">{{ person.image }}</div>
             <div class="col-md-4">
@@ -28,15 +36,16 @@
                         <tr>
                             <th>Member since</th><td>{{ person.created_at }}</td>
                         </tr>
-{#                        <tr>#}
-{#                            <td><a href="{% url 'update' person.id %}"><button type="button">Update</button></a></td><td><a href="{% url 'delete' person.id %}"><button type="button">Delete</button></a></td>#}
-{#                        </tr>#}
+                        <tr>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <td><a href="{% url 'detail' person.id %}"><button type="button">NO!</button></a></td><td><a href="{% url 'delete' person.id %}"><button type="submit">Delete</button></a></td>
+                            </form>
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-md-4"></div>
         </div>
     </div>
-
-
 {% endblock %}

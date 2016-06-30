@@ -30,7 +30,7 @@ class Traveller(models.Model):
     hometown = models.CharField(max_length = 200)
     current_location = models.CharField(max_length = 200, blank = True, help_text = "You can leave this blank")
     biography = models.TextField(null = True, blank = True, help_text = "Don't write your life story! Just a little bit")
-    image = models.ImageField(null = True, blank = True, upload_to = None, height_field = None, width_field = None, max_length=10000, default = 'images/feet.png')
+    image = models.ImageField(null = True, blank = True, upload_to = None, height_field = None, width_field = None, max_length=10000, default = "/static/images/feet.png")
     date_of_birth = models.DateField()
     created_at = models.DateTimeField(auto_now = False, auto_now_add = True)
     edited_at = models.DateTimeField(auto_now = True, auto_now_add = False)

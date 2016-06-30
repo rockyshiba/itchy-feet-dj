@@ -1,10 +1,9 @@
 {% extends "register/base.html" %}
-
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">{{ person.image }}</div>
-            <div class="col-md-4">
+            <div class="col-md-3">{{ person.image }}</div>
+            <div class="col-md-6">
                 <table id="profile_details">
                     <tbody>
                         <tr>
@@ -14,29 +13,27 @@
                             <th>Gender</th><td>{{ person.gender }}</td>
                         </tr>
                         <tr>
-                            <th>Hometown</th><td>{{ person.hometown }}</td>
+                            <th>Hometown</th><td><input type="text" name="hometown" value="{{ person.hometown }}" /></td>
                         </tr>
                         <tr>
                             <th>D.O.B.</th><td>{{ person.date_of_birth }}</td>
                         </tr>
                         <tr>
-                            <th>Current location</th><td>{{ person.current_location }}</td>
+                            <th>Current location</th><td><input type="text" name="current_location" value="{{ person.current_location }}" /></td>
                         </tr>
                         <tr>
-                            <th>Bio</th><td>{{ person.biography }}</td>
+                            <th>Bio</th><td><input type="text" name="biography" value="{{ person.biography }}" /></td>
                         </tr>
                         <tr>
                             <th>Member since</th><td>{{ person.created_at }}</td>
                         </tr>
-{#                        <tr>#}
-{#                            <td><a href="{% url 'update' person.id %}"><button type="button">Update</button></a></td><td><a href="{% url 'delete' person.id %}"><button type="button">Delete</button></a></td>#}
-{#                        </tr>#}
+                        <tr>
+                            <td><a href="{% url 'update' person.id %}"><button type="button">Update</button></a></td><td><a href="{% url 'delete' person.id %}"><button type="button">Delete</button></a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-3"></div>
         </div>
     </div>
-
-
 {% endblock %}
