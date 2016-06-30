@@ -12,7 +12,9 @@ By default Django uses http://127.0.0.1:8000/ locally
 Itchy Feet
 A prototype social media project with the aim to do CRUD in Django. Some design decisions don't make sense at this
 stage of the project but as it stands currently CRUD is possible. 
-To demonstrate this for yourself, create a new user using Sign Up. Then login using Login with email and password. 
+To demonstrate this for yourself, create a new user using Sign Up. 
+The confirmation page will say to check your email but no such feature is implemented as of yet. 
+Login using Login with email and password. 
 
 The heart of the project is in the register directory. 
 The models are in models.py
